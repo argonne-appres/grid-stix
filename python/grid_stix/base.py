@@ -163,9 +163,10 @@ IDENTITY_PROPERTY_CONFIG = {
     # Assets
     "x-grid-generator": [
         "name",
-        "x_grid_component_type",
+        "x_asset_id",
         "x_power_rating_mw",
         "x_fuel_type",
+        "x_owner_organization",
     ],
     "x-grid-transformer": [
         "name",
@@ -175,21 +176,24 @@ IDENTITY_PROPERTY_CONFIG = {
     ],
     "x-grid-substation": [
         "name",
+        "x_asset_id",
         "x_high_voltage_level_kv",
         "x_substation_type",
+        "x_gps_coordinates",
     ],
     "x-grid-transmission-line": [
         "name",
-        "x_grid_component_type",
+        "x_asset_id",
         "x_voltage_level_kv",
         "x_length_km",
         "x_conductor_type",
     ],
     "x-grid-distribution-line": [
         "name",
-        "x_grid_component_type",
+        "x_asset_id",
         "x_voltage_level_kv",
         "x_length_km",
+        "x_service_area",
     ],
     "x-grid-control-center": [
         "name",
@@ -273,8 +277,8 @@ IDENTITY_PROPERTY_CONFIG = {
     "x-grid-operational-context": ["first_observed", "x_operational_mode"],
     "x-grid-der-operational-context": ["first_observed", "x_der_resource_id"],
     # Components (unhyphenated versions match generator output)
-    "x-grid-smart-meter": ["name", "x_grid_component_type"],
-    "x-grid-smartmeter": ["name", "x_grid_component_type"],
+    "x-grid-smart-meter": ["name", "x_asset_id", "x_ip_address", "x_mac_address"],
+    "x-grid-smartmeter": ["name", "x_asset_id", "x_ip_address", "x_mac_address"],
     "x-grid-battery-energy-storage-system": [
         "name",
         "x_bess_system_id",

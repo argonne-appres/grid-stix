@@ -74,6 +74,9 @@ class ProtectsAssetRelationship(GridSTIXRelationshipObject):
             ("x_source_ref", StringProperty()),
             ("x_target_ref", StringProperty()),
             ("x_relationship_type", StringProperty()),
+            ("x_source_ref", StringProperty()),
+            ("x_target_ref", StringProperty()),
+            ("x_relationship_type", StringProperty()),
         ]
     )
 

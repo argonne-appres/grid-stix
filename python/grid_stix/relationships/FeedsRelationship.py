@@ -71,6 +71,9 @@ class FeedsRelationship(GridSTIXRelationshipObject):
             ("x_grid_component_type", StringProperty()),
             ("x_criticality_level", IntegerProperty()),
             ("x_feed_type", ListProperty(StringProperty())),
+            ("x_source_ref", StringProperty()),
+            ("x_target_ref", StringProperty()),
+            ("x_relationship_type", StringProperty()),
         ]
     )
 
