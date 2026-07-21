@@ -38,6 +38,9 @@ from .DisasterDeclarationLevelOv import DisasterDeclarationLevelOv
 from .DisasterTypeOv import DisasterTypeOv
 
 
+from .DiscrepancyTypeOv import DiscrepancyTypeOv
+
+
 from .EmergencyStatusOv import EmergencyStatusOv
 
 
@@ -107,6 +110,9 @@ from .OutageTypeOv import OutageTypeOv
 from .PotentialImpactOv import PotentialImpactOv
 
 
+from .PowerReactorTypeOv import PowerReactorTypeOv
+
+
 from .RadiationDetectionMethodOv import RadiationDetectionMethodOv
 
 
@@ -169,6 +175,7 @@ __all__ = [
     "DetectionMethodOv",
     "DisasterDeclarationLevelOv",
     "DisasterTypeOv",
+    "DiscrepancyTypeOv",
     "EmergencyStatusOv",
     "EmergencyTypeOv",
     "EnrichmentLevelOv",
@@ -192,6 +199,7 @@ __all__ = [
     "OutageCauseOv",
     "OutageTypeOv",
     "PotentialImpactOv",
+    "PowerReactorTypeOv",
     "RadiationDetectionMethodOv",
     "RegulatoryClassificationOv",
     "RenewableTypeOv",

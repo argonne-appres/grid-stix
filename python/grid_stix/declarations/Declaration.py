@@ -1,9 +1,9 @@
 """
-Nuclear power generation facilities using nuclear fission to produce electricity.
+A self-reported or declared value about an entity, asserted by some source, without independent verification. No specific STIX object type represents this well, so it is a new root concept rather than a forced subclass.
 
 This class was automatically generated from the Grid-STIX ontology.
 
-Namespace: http://www.anl.gov/sss/grid-stix-2.1-components.owl
+Namespace: http://www.anl.gov/sss/grid-stix-2.1-declarations.owl
 
 """
 
@@ -29,17 +29,17 @@ from stix2.utils import NOW  # type: ignore[import-untyped]
 
 from ..base import GridSTIXDomainObject
 
-from ..vocab import PowerReactorTypeOv
+from ..assets import PhysicalAsset
 
 
-class NuclearPowerPlant(GridSTIXDomainObject):
+class Declaration(GridSTIXDomainObject):
     """
-    Nuclear power generation facilities using nuclear fission to produce electricity.
+    A self-reported or declared value about an entity, asserted by some source, without independent verification. No specific STIX object type represents this well, so it is a new root concept rather than a forced subclass.
 
     """
 
     # STIX type identifier for this Grid-STIX object
-    _type = "x-grid-nuclear-power-plant"
+    _type = "x-grid-declaration"
 
     # STIX properties definition following official STIX patterns
     _properties = OrderedDict(
@@ -71,16 +71,15 @@ class NuclearPowerPlant(GridSTIXDomainObject):
             ("x_compliance_framework", ListProperty(StringProperty)),
             ("x_grid_component_type", StringProperty()),
             ("x_criticality_level", IntegerProperty()),
-            ("x_reactor_technology", ListProperty(StringProperty())),
-            ("x_capacity_mw", ListProperty(FloatProperty())),
-            ("x_plant_id", ListProperty(StringProperty())),
-            ("x_reactor_core_temperature", ListProperty(FloatProperty())),
-            ("x_reactor_type", ListProperty(StringProperty())),
+            ("x_declared_entity_ref", ListProperty(StringProperty())),
+            ("x_declaration_source", ListProperty(StringProperty())),
+            ("x_declared_as_of", ListProperty(StringProperty())),
+            ("x_declared_value", ListProperty(StringProperty())),
         ]
     )
 
     def __init__(self, **kwargs: Any) -> None:
-        """Initialize NuclearPowerPlant with Grid-STIX properties."""
+        """Initialize Declaration with Grid-STIX properties."""
         # Set STIX type if not provided
         if "type" not in kwargs:
             kwargs["type"] = self._type

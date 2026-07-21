@@ -1,9 +1,9 @@
 """
-Nuclear power generation facilities using nuclear fission to produce electricity.
+The typed outcome of comparing a Declaration against independently observed evidence: agreement, contradiction, or a lead/lag in timing.
 
 This class was automatically generated from the Grid-STIX ontology.
 
-Namespace: http://www.anl.gov/sss/grid-stix-2.1-components.owl
+Namespace: http://www.anl.gov/sss/grid-stix-2.1-declarations.owl
 
 """
 
@@ -29,17 +29,19 @@ from stix2.utils import NOW  # type: ignore[import-untyped]
 
 from ..base import GridSTIXDomainObject
 
-from ..vocab import PowerReactorTypeOv
+from .Declaration import Declaration
+
+from ..vocab import DiscrepancyTypeOv
 
 
-class NuclearPowerPlant(GridSTIXDomainObject):
+class Discrepancy(GridSTIXDomainObject):
     """
-    Nuclear power generation facilities using nuclear fission to produce electricity.
+    The typed outcome of comparing a Declaration against independently observed evidence: agreement, contradiction, or a lead/lag in timing.
 
     """
 
     # STIX type identifier for this Grid-STIX object
-    _type = "x-grid-nuclear-power-plant"
+    _type = "x-grid-discrepancy"
 
     # STIX properties definition following official STIX patterns
     _properties = OrderedDict(
@@ -71,16 +73,17 @@ class NuclearPowerPlant(GridSTIXDomainObject):
             ("x_compliance_framework", ListProperty(StringProperty)),
             ("x_grid_component_type", StringProperty()),
             ("x_criticality_level", IntegerProperty()),
-            ("x_reactor_technology", ListProperty(StringProperty())),
-            ("x_capacity_mw", ListProperty(FloatProperty())),
-            ("x_plant_id", ListProperty(StringProperty())),
-            ("x_reactor_core_temperature", ListProperty(FloatProperty())),
-            ("x_reactor_type", ListProperty(StringProperty())),
+            ("x_compares_declaration", ListProperty(StringProperty())),
+            ("x_compares_evidence", ListProperty(StringProperty())),
+            ("x_discrepancy_type", ListProperty(StringProperty())),
+            ("x_confidence", ListProperty(IntegerProperty())),
+            ("x_declared_state", ListProperty(StringProperty())),
+            ("x_implied_state", ListProperty(StringProperty())),
         ]
     )
 
     def __init__(self, **kwargs: Any) -> None:
-        """Initialize NuclearPowerPlant with Grid-STIX properties."""
+        """Initialize Discrepancy with Grid-STIX properties."""
         # Set STIX type if not provided
         if "type" not in kwargs:
             kwargs["type"] = self._type

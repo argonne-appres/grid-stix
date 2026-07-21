@@ -1,9 +1,9 @@
 """
-Nuclear power generation facilities using nuclear fission to produce electricity.
+Open vocabulary for power reactor technology, following IAEA PRIS reactor-type codes.
 
 This class was automatically generated from the Grid-STIX ontology.
 
-Namespace: http://www.anl.gov/sss/grid-stix-2.1-components.owl
+Namespace: http://www.anl.gov/sss/grid-stix-2.1-vocab.owl
 
 """
 
@@ -29,17 +29,15 @@ from stix2.utils import NOW  # type: ignore[import-untyped]
 
 from ..base import GridSTIXDomainObject
 
-from ..vocab import PowerReactorTypeOv
 
-
-class NuclearPowerPlant(GridSTIXDomainObject):
+class PowerReactorTypeOv(GridSTIXDomainObject):
     """
-    Nuclear power generation facilities using nuclear fission to produce electricity.
+    Open vocabulary for power reactor technology, following IAEA PRIS reactor-type codes.
 
     """
 
     # STIX type identifier for this Grid-STIX object
-    _type = "x-grid-nuclear-power-plant"
+    _type = "x-grid-power-reactor-type-ov"
 
     # STIX properties definition following official STIX patterns
     _properties = OrderedDict(
@@ -71,16 +69,11 @@ class NuclearPowerPlant(GridSTIXDomainObject):
             ("x_compliance_framework", ListProperty(StringProperty)),
             ("x_grid_component_type", StringProperty()),
             ("x_criticality_level", IntegerProperty()),
-            ("x_reactor_technology", ListProperty(StringProperty())),
-            ("x_capacity_mw", ListProperty(FloatProperty())),
-            ("x_plant_id", ListProperty(StringProperty())),
-            ("x_reactor_core_temperature", ListProperty(FloatProperty())),
-            ("x_reactor_type", ListProperty(StringProperty())),
         ]
     )
 
     def __init__(self, **kwargs: Any) -> None:
-        """Initialize NuclearPowerPlant with Grid-STIX properties."""
+        """Initialize PowerReactorTypeOv with Grid-STIX properties."""
         # Set STIX type if not provided
         if "type" not in kwargs:
             kwargs["type"] = self._type
