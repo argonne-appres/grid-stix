@@ -32,6 +32,9 @@ from ..base import GridSTIXRelationshipObject
 from ..vocab import AuthenticationRequirementOv
 
 
+from ..base import GridReferenceProperty
+
+
 class AuthenticatesToRelationship(GridSTIXRelationshipObject):
     """
     Relationship between an identity and a device for authentication.
@@ -40,6 +43,16 @@ class AuthenticatesToRelationship(GridSTIXRelationshipObject):
 
     # STIX type identifier for this Grid-STIX object
     _type = "x-grid-authenticates-to-relationship"
+
+    # STIX 2.1 forbids relationship endpoints from being SROs, Bundles,
+    # Language Content, or Marking Definitions (mirrors stix2.v21.sro.Relationship)
+    _invalid_source_target_types = [
+        "bundle",
+        "language-content",
+        "marking-definition",
+        "relationship",
+        "sighting",
+    ]
 
     # STIX properties definition following official STIX patterns
     _properties = OrderedDict(
@@ -73,12 +86,25 @@ class AuthenticatesToRelationship(GridSTIXRelationshipObject):
             ("x_criticality_level", IntegerProperty()),
             ("x_authentication_requirement", ListProperty(StringProperty())),
             ("x_authentication_success_rate", ListProperty(FloatProperty())),
-            ("x_source_ref", StringProperty()),
-            ("x_target_ref", StringProperty()),
-            ("x_relationship_type", StringProperty()),
-            ("x_source_ref", StringProperty()),
-            ("x_target_ref", StringProperty()),
-            ("x_relationship_type", StringProperty()),
+            # References the SDO/SCO endpoints of this relationship; STIX 2.1 requires
+            # these to be validated STIX identifiers, not arbitrary strings
+            (
+                "x_source_ref",
+                GridReferenceProperty(
+                    spec_version="2.1",
+                    invalid_types=_invalid_source_target_types,
+                    required=True,
+                ),
+            ),
+            (
+                "x_target_ref",
+                GridReferenceProperty(
+                    spec_version="2.1",
+                    invalid_types=_invalid_source_target_types,
+                    required=True,
+                ),
+            ),
+            ("x_relationship_type", StringProperty(required=True)),
         ]
     )
 

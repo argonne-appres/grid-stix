@@ -30,6 +30,9 @@ from stix2.utils import NOW  # type: ignore[import-untyped]
 from ..base import GridSTIXRelationshipObject
 
 
+from ..base import GridReferenceProperty
+
+
 class SuppliedByRelationship(GridSTIXRelationshipObject):
     """
     Relationship indicating fuel or energy supply chains for generation assets.
@@ -38,6 +41,16 @@ class SuppliedByRelationship(GridSTIXRelationshipObject):
 
     # STIX type identifier for this Grid-STIX object
     _type = "x-grid-supplied-by-relationship"
+
+    # STIX 2.1 forbids relationship endpoints from being SROs, Bundles,
+    # Language Content, or Marking Definitions (mirrors stix2.v21.sro.Relationship)
+    _invalid_source_target_types = [
+        "bundle",
+        "language-content",
+        "marking-definition",
+        "relationship",
+        "sighting",
+    ]
 
     # STIX properties definition following official STIX patterns
     _properties = OrderedDict(
@@ -69,12 +82,25 @@ class SuppliedByRelationship(GridSTIXRelationshipObject):
             ("x_compliance_framework", ListProperty(StringProperty)),
             ("x_grid_component_type", StringProperty()),
             ("x_criticality_level", IntegerProperty()),
-            ("x_source_ref", StringProperty()),
-            ("x_target_ref", StringProperty()),
-            ("x_relationship_type", StringProperty()),
-            ("x_source_ref", StringProperty()),
-            ("x_target_ref", StringProperty()),
-            ("x_relationship_type", StringProperty()),
+            # References the SDO/SCO endpoints of this relationship; STIX 2.1 requires
+            # these to be validated STIX identifiers, not arbitrary strings
+            (
+                "x_source_ref",
+                GridReferenceProperty(
+                    spec_version="2.1",
+                    invalid_types=_invalid_source_target_types,
+                    required=True,
+                ),
+            ),
+            (
+                "x_target_ref",
+                GridReferenceProperty(
+                    spec_version="2.1",
+                    invalid_types=_invalid_source_target_types,
+                    required=True,
+                ),
+            ),
+            ("x_relationship_type", StringProperty(required=True)),
         ]
     )
 
