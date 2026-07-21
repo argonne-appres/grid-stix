@@ -37,7 +37,6 @@ from .gen_code import generate_python_code
 from .loader import load_ontology
 from .optimise_ir import IROptimizer
 
-
 logger = logging.getLogger(__name__)
 
 

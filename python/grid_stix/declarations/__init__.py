@@ -13,7 +13,6 @@ from .Declaration import Declaration
 
 from .Discrepancy import Discrepancy
 
-
 # Public API
 __all__ = [
     "Declaration",

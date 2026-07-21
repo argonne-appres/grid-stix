@@ -25,7 +25,6 @@ from stix2.properties import (  # type: ignore[import-untyped]
 )
 from stix2.utils import NOW  # type: ignore[import-untyped]
 
-
 # External imports
 
 from ..base import GridSTIXDomainObject
@@ -37,7 +36,6 @@ from .PhysicalAsset import PhysicalAsset
 from ..vocab import RegulatoryClassificationOv
 
 from ..relationships import UnionAllAssets
-
 
 # Forward references will be resolved after all classes are defined
 

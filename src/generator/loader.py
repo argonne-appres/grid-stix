@@ -42,7 +42,6 @@ from urllib.request import urlretrieve
 import owlready2
 from owlready2 import World, get_ontology
 
-
 logger = logging.getLogger(__name__)
 
 

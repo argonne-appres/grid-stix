@@ -5,7 +5,7 @@ channels:
 dependencies:
   - python=3.12
   - bandit=1.8
-  - black=25.1
+  - black=26.3
   - cachecontrol-with-filecache=0.14  # For pip-audit
   - jinja2=3.1
   - mypy=1.17
@@ -16,14 +16,14 @@ dependencies:
   - plotly=6.1
   - pydantic=2.11
   - pygraphviz=1.14
-  - pytest=8.4
-  - pytest-asyncio=1.0
+  - pytest=9.0
+  - pytest-asyncio=1.4
   - pytest-cov=6.1
   - pytest-mock=3.14
   - rdflib=7.1
   - scipy=1.15
   - twine=6.2
-  - pip=25.3
+  - pip=26.1
   - pip:
     - stix2~=3.0.1
     - build~=1.3.0

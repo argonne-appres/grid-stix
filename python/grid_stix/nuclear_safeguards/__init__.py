@@ -52,7 +52,6 @@ from .SafeguardsSystem import SafeguardsSystem
 
 from .WasteStorageFacility import WasteStorageFacility
 
-
 # Public API
 __all__ = [
     "ContainmentSurveillanceSystem",

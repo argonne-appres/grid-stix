@@ -163,7 +163,6 @@ from .VoltageStatusOv import VoltageStatusOv
 
 from .WeatherTypeOv import WeatherTypeOv
 
-
 # Public API
 __all__ = [
     "AlertLevelOv",

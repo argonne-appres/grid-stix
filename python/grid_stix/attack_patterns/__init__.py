@@ -31,7 +31,6 @@ from .ProtocolAttackPattern import ProtocolAttackPattern
 
 from .SocialEngineeringAttackPattern import SocialEngineeringAttackPattern
 
-
 # Resolve forward references
 
 
