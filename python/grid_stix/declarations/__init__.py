@@ -13,8 +13,12 @@ from .Declaration import Declaration
 
 from .Discrepancy import Discrepancy
 
+
+from .LifecycleEvent import LifecycleEvent
+
 # Public API
 __all__ = [
     "Declaration",
     "Discrepancy",
+    "LifecycleEvent",
 ]
