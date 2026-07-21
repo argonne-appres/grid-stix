@@ -25,7 +25,6 @@ from stix2.properties import (  # type: ignore[import-untyped]
 )
 from stix2.utils import NOW  # type: ignore[import-untyped]
 
-
 # External imports
 
 from ..base import GridSTIXObservableObject
@@ -43,7 +42,6 @@ from ..assets import OTDevice
 from ..policies import Policy
 
 from ..assets import SecurityZone
-
 
 # Forward references will be resolved after all classes are defined
 

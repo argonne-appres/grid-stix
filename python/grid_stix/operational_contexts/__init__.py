@@ -25,7 +25,6 @@ from .OperationalContext import OperationalContext
 
 from .OutageContext import OutageContext
 
-
 # Public API
 __all__ = [
     "DerOperationalContext",

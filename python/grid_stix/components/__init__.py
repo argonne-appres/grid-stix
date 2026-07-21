@@ -160,7 +160,6 @@ from .V2gCommunicationModule import V2gCommunicationModule
 
 from .WindTurbine import WindTurbine
 
-
 # Resolve forward references
 
 

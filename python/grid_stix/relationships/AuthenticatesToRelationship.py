@@ -25,7 +25,6 @@ from stix2.properties import (  # type: ignore[import-untyped]
 )
 from stix2.utils import NOW  # type: ignore[import-untyped]
 
-
 # External imports
 
 from ..base import GridSTIXRelationshipObject

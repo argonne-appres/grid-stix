@@ -42,7 +42,6 @@ import owlready2
 import yaml
 from owlready2 import World
 
-
 logger = logging.getLogger(__name__)
 
 

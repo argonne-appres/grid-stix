@@ -47,7 +47,6 @@ from jinja2 import Environment, FileSystemLoader
 from .build_ir import ClassDef
 from .optimise_ir import OptimizedIR
 
-
 logger = logging.getLogger(__name__)
 
 

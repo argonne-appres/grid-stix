@@ -54,8 +54,7 @@ class TestPythonValidator:
             test_file = Path(temp_dir) / "valid.py"
 
             with open(test_file, "w") as f:
-                f.write(
-                    """
+                f.write("""
 def hello_world():
     print("Hello, World!")
     return True
@@ -63,8 +62,7 @@ def hello_world():
 class TestClass:
     def __init__(self):
         self.value = 42
-"""
-                )
+""")
 
             import sys
 
@@ -85,13 +83,11 @@ class TestClass:
             test_file = Path(temp_dir) / "invalid.py"
 
             with open(test_file, "w") as f:
-                f.write(
-                    """
+                f.write("""
 def broken_function(
     # Missing closing parenthesis and colon
     print("This is broken")
-"""
-                )
+""")
 
             import sys
 
@@ -113,16 +109,14 @@ def broken_function(
             test_file = Path(temp_dir) / "valid_class.py"
 
             with open(test_file, "w") as f:
-                f.write(
-                    """
+                f.write("""
 from pydantic import BaseModel
 from typing import Optional, Any
 
 class TestGridSTIXClass(BaseModel):
     name: Optional[str] = None
     value: Optional[int] = None
-"""
-                )
+""")
 
             import sys
 
@@ -143,14 +137,12 @@ class TestGridSTIXClass(BaseModel):
             test_file = Path(temp_dir) / "no_class.py"
 
             with open(test_file, "w") as f:
-                f.write(
-                    """
+                f.write("""
 def some_function():
     return "No classes here"
 
 SOME_CONSTANT = 42
-"""
-                )
+""")
 
             import sys
 
@@ -401,8 +393,7 @@ class TestUtilityIntegration:
             # Create a valid Grid-STIX class file
             test_file = python_dir / "TestClass.py"
             with open(test_file, "w") as f:
-                f.write(
-                    """
+                f.write("""
 from pydantic import BaseModel
 from typing import Optional, Any
 
@@ -413,8 +404,7 @@ class TestClass(BaseModel):
     
     def validate_properties(self) -> bool:
         return True
-"""
-                )
+""")
 
             import sys
 

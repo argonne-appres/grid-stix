@@ -43,7 +43,6 @@ from .PhysicalAccessEvent import PhysicalAccessEvent
 
 from .StateChangeEvent import StateChangeEvent
 
-
 # Resolve forward references
 
 

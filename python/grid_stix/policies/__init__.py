@@ -40,7 +40,6 @@ from .QuarantineAction import QuarantineAction
 
 from .SecurityPolicy import SecurityPolicy
 
-
 # Public API
 __all__ = [
     "AccessPolicy",

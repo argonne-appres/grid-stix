@@ -28,7 +28,6 @@ from stix2.properties import (  # type: ignore[import-untyped]
 )
 from stix2.utils import NOW  # type: ignore[import-untyped]
 
-
 # Grid-STIX namespace UUID for deterministic UUID generation
 GRID_STIX_NAMESPACE = UUID("6ba7b810-9dad-11d1-80b4-00c04fd430c8")
 
