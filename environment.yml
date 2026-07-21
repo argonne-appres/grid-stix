@@ -25,6 +25,11 @@ dependencies:
   - twine=6.2
   - pip=26.1
   - pip:
-    - stix2~=3.0.1
+    # Exact-pinned: stix2 3.0.2 has an upstream bug where FloatProperty and
+    # BooleanProperty were not updated for the new interoperability parameter
+    # threaded through Property.clean() (added in PR #620), so ListProperty
+    # wraps of either type raise InvalidValueError. Loosen back to ~=3.0.1
+    # once a stix2 release fixes this (unreported upstream as of 2026-07-21).
+    - stix2==3.0.1
     - build~=1.3.0
     - urllib3>=2.6.0
