@@ -38,6 +38,9 @@ from .DisasterDeclarationLevelOv import DisasterDeclarationLevelOv
 from .DisasterTypeOv import DisasterTypeOv
 
 
+from .DiscrepancyTypeOv import DiscrepancyTypeOv
+
+
 from .EmergencyStatusOv import EmergencyStatusOv
 
 
@@ -170,6 +173,7 @@ __all__ = [
     "DetectionMethodOv",
     "DisasterDeclarationLevelOv",
     "DisasterTypeOv",
+    "DiscrepancyTypeOv",
     "EmergencyStatusOv",
     "EmergencyTypeOv",
     "EnrichmentLevelOv",

@@ -4,6 +4,7 @@ namespaces:
   "http://www.anl.gov/sss/grid-stix-2.1-components.owl": grid_stix.components
   "http://www.anl.gov/sss/grid-stix-2.1-attack-patterns.owl": grid_stix.attack_patterns
   "http://www.anl.gov/sss/grid-stix-2.1-cyber-contexts.owl": grid_stix.cyber_contexts
+  "http://www.anl.gov/sss/grid-stix-2.1-declarations.owl": grid_stix.declarations
   "http://www.anl.gov/sss/grid-stix-2.1-environmental-contexts.owl": grid_stix.environmental_contexts
   "http://www.anl.gov/sss/grid-stix-2.1-events-observables.owl": grid_stix.events_observables
   "http://www.anl.gov/sss/grid-stix-2.1-nuclear-safeguards.owl": grid_stix.nuclear_safeguards

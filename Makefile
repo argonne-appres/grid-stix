@@ -77,6 +77,7 @@ merge:
 		--input ontology/core/grid-stix-2.1-assets.owl \
 		--input ontology/core/grid-stix-2.1-components.owl \
 		--input ontology/core/grid-stix-2.1-relationships.owl \
+		--input ontology/core/grid-stix-2.1-declarations.owl \
 		--input ontology/observables/grid-stix-2.1-events-observables.owl \
 		--input ontology/threat/grid-stix-2.1-attack-patterns.owl \
 		--input ontology/policy/grid-stix-2.1-policies.owl \

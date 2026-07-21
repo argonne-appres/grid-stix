@@ -1733,4 +1733,33 @@
     <rdfs:label>measurement_discrepancy</rdfs:label>
     <rdfs:comment>Significant discrepancy in nuclear material measurements.</rdfs:comment>
   </owl:NamedIndividual>
+
+  <owl:Class rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#discrepancy_type_ov">
+    <rdfs:label>discrepancy_type_ov</rdfs:label>
+    <rdfs:comment>Open vocabulary for how a declared value relates to independently observed evidence. Domain-agnostic: applies to any Declaration/Discrepancy comparison, not a specific facility or asset type.</rdfs:comment>
+  </owl:Class>
+
+  <owl:NamedIndividual rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#discrepancy-type-contradiction">
+    <rdf:type rdf:resource="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#discrepancy_type_ov"/>
+    <rdfs:label>contradiction</rdfs:label>
+    <rdfs:comment>The declared value is incompatible with the observed evidence.</rdfs:comment>
+  </owl:NamedIndividual>
+
+  <owl:NamedIndividual rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#discrepancy-type-lead">
+    <rdf:type rdf:resource="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#discrepancy_type_ov"/>
+    <rdfs:label>lead</rdfs:label>
+    <rdfs:comment>The observed evidence shows a committed transition the declared value has not yet reflected.</rdfs:comment>
+  </owl:NamedIndividual>
+
+  <owl:NamedIndividual rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#discrepancy-type-lag">
+    <rdf:type rdf:resource="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#discrepancy_type_ov"/>
+    <rdfs:label>lag</rdfs:label>
+    <rdfs:comment>The declared value shows a transition the observed evidence has not yet caught up to or contradicts in timing.</rdfs:comment>
+  </owl:NamedIndividual>
+
+  <owl:NamedIndividual rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#discrepancy-type-agreement">
+    <rdf:type rdf:resource="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#discrepancy_type_ov"/>
+    <rdfs:label>agreement</rdfs:label>
+    <rdfs:comment>The declared value and observed evidence are consistent (true negative).</rdfs:comment>
+  </owl:NamedIndividual>
 </rdf:RDF>
