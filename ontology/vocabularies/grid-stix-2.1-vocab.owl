@@ -1762,4 +1762,81 @@
     <rdfs:label>agreement</rdfs:label>
     <rdfs:comment>The declared value and observed evidence are consistent (true negative).</rdfs:comment>
   </owl:NamedIndividual>
+
+  <!-- Additional nuclear material types (padding existing vocabulary; -->
+  <!-- uranium/plutonium/spent-fuel forms already covered above) -->
+  <owl:NamedIndividual rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#nuclear-material-uranium-hexafluoride">
+    <rdf:type rdf:resource="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#nuclear_material_type_ov"/>
+    <rdfs:label>uranium_hexafluoride</rdfs:label>
+    <rdfs:comment>Uranium hexafluoride (UF6), the feedstock form used in enrichment processes.</rdfs:comment>
+  </owl:NamedIndividual>
+
+  <owl:NamedIndividual rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#nuclear-material-fresh-fuel">
+    <rdf:type rdf:resource="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#nuclear_material_type_ov"/>
+    <rdfs:label>fresh_fuel</rdfs:label>
+    <rdfs:comment>Fabricated reactor fuel assemblies not yet irradiated.</rdfs:comment>
+  </owl:NamedIndividual>
+
+  <owl:NamedIndividual rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#nuclear-material-mox-fuel">
+    <rdf:type rdf:resource="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#nuclear_material_type_ov"/>
+    <rdfs:label>mox_fuel</rdfs:label>
+    <rdfs:comment>Mixed oxide fuel containing both uranium and plutonium oxides.</rdfs:comment>
+  </owl:NamedIndividual>
+
+  <!-- =============================================== -->
+  <!-- POWER REACTOR TECHNOLOGY -->
+  <!-- =============================================== -->
+  <!-- Distinct from components.owl#reactor-type (an existing free-string -->
+  <!-- property that is an identity-contributing field for deterministic -->
+  <!-- UUID generation on nuclear-power-plant instances; changing its value -->
+  <!-- type would change generated IDs for existing objects). This is a new, -->
+  <!-- additive, controlled-vocabulary companion property, not a replacement. -->
+  <!-- Values follow IAEA PRIS reactor-type codes. -->
+
+  <owl:Class rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#power_reactor_type_ov">
+    <rdfs:label>power_reactor_type_ov</rdfs:label>
+    <rdfs:comment>Open vocabulary for power reactor technology, following IAEA PRIS reactor-type codes.</rdfs:comment>
+  </owl:Class>
+
+  <owl:NamedIndividual rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#power-reactor-type-pwr">
+    <rdf:type rdf:resource="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#power_reactor_type_ov"/>
+    <rdfs:label>pwr</rdfs:label>
+    <rdfs:comment>Pressurized Water Reactor, the most common power reactor design worldwide.</rdfs:comment>
+  </owl:NamedIndividual>
+
+  <owl:NamedIndividual rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#power-reactor-type-bwr">
+    <rdf:type rdf:resource="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#power_reactor_type_ov"/>
+    <rdfs:label>bwr</rdfs:label>
+    <rdfs:comment>Boiling Water Reactor.</rdfs:comment>
+  </owl:NamedIndividual>
+
+  <owl:NamedIndividual rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#power-reactor-type-phwr">
+    <rdf:type rdf:resource="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#power_reactor_type_ov"/>
+    <rdfs:label>phwr</rdfs:label>
+    <rdfs:comment>Pressurized Heavy Water Reactor (e.g., CANDU design).</rdfs:comment>
+  </owl:NamedIndividual>
+
+  <owl:NamedIndividual rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#power-reactor-type-lwgr">
+    <rdf:type rdf:resource="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#power_reactor_type_ov"/>
+    <rdfs:label>lwgr</rdfs:label>
+    <rdfs:comment>Light Water Graphite Reactor (e.g., RBMK design).</rdfs:comment>
+  </owl:NamedIndividual>
+
+  <owl:NamedIndividual rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#power-reactor-type-gcr">
+    <rdf:type rdf:resource="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#power_reactor_type_ov"/>
+    <rdfs:label>gcr</rdfs:label>
+    <rdfs:comment>Gas-Cooled Reactor, including Advanced Gas-cooled Reactor (AGR) designs.</rdfs:comment>
+  </owl:NamedIndividual>
+
+  <owl:NamedIndividual rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#power-reactor-type-fbr">
+    <rdf:type rdf:resource="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#power_reactor_type_ov"/>
+    <rdfs:label>fbr</rdfs:label>
+    <rdfs:comment>Fast Breeder Reactor / fast neutron reactor.</rdfs:comment>
+  </owl:NamedIndividual>
+
+  <owl:NamedIndividual rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#power-reactor-type-smr">
+    <rdf:type rdf:resource="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#power_reactor_type_ov"/>
+    <rdfs:label>smr</rdfs:label>
+    <rdfs:comment>Small Modular Reactor, a deployment-scale category that may use any of the above core technologies.</rdfs:comment>
+  </owl:NamedIndividual>
 </rdf:RDF>
