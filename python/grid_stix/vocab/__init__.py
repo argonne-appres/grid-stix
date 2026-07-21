@@ -107,6 +107,9 @@ from .OutageTypeOv import OutageTypeOv
 from .PotentialImpactOv import PotentialImpactOv
 
 
+from .PowerReactorTypeOv import PowerReactorTypeOv
+
+
 from .RadiationDetectionMethodOv import RadiationDetectionMethodOv
 
 
@@ -193,6 +196,7 @@ __all__ = [
     "OutageCauseOv",
     "OutageTypeOv",
     "PotentialImpactOv",
+    "PowerReactorTypeOv",
     "RadiationDetectionMethodOv",
     "RegulatoryClassificationOv",
     "RenewableTypeOv",
