@@ -43,7 +43,6 @@ from typing import Any, Optional
 
 from .build_ir import AttrDef, ClassDef, IntermediateRepresentation
 
-
 logger = logging.getLogger(__name__)
 
 

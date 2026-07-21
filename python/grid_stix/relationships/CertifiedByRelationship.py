@@ -25,10 +25,12 @@ from stix2.properties import (  # type: ignore[import-untyped]
 )
 from stix2.utils import NOW  # type: ignore[import-untyped]
 
-
 # External imports
 
 from ..base import GridSTIXRelationshipObject
+
+
+from ..base import GridReferenceProperty
 
 
 class CertifiedByRelationship(GridSTIXRelationshipObject):
@@ -39,6 +41,16 @@ class CertifiedByRelationship(GridSTIXRelationshipObject):
 
     # STIX type identifier for this Grid-STIX object
     _type = "x-grid-certified-by-relationship"
+
+    # STIX 2.1 forbids relationship endpoints from being SROs, Bundles,
+    # Language Content, or Marking Definitions (mirrors stix2.v21.sro.Relationship)
+    _invalid_source_target_types = [
+        "bundle",
+        "language-content",
+        "marking-definition",
+        "relationship",
+        "sighting",
+    ]
 
     # STIX properties definition following official STIX patterns
     _properties = OrderedDict(
@@ -74,12 +86,25 @@ class CertifiedByRelationship(GridSTIXRelationshipObject):
             ("x_certificate_valid_from", ListProperty(StringProperty())),
             ("x_certificate_valid_until", ListProperty(StringProperty())),
             ("x_certification_level", ListProperty(StringProperty())),
-            ("x_source_ref", StringProperty()),
-            ("x_target_ref", StringProperty()),
-            ("x_relationship_type", StringProperty()),
-            ("x_source_ref", StringProperty()),
-            ("x_target_ref", StringProperty()),
-            ("x_relationship_type", StringProperty()),
+            # References the SDO/SCO endpoints of this relationship; STIX 2.1 requires
+            # these to be validated STIX identifiers, not arbitrary strings
+            (
+                "x_source_ref",
+                GridReferenceProperty(
+                    spec_version="2.1",
+                    invalid_types=_invalid_source_target_types,
+                    required=True,
+                ),
+            ),
+            (
+                "x_target_ref",
+                GridReferenceProperty(
+                    spec_version="2.1",
+                    invalid_types=_invalid_source_target_types,
+                    required=True,
+                ),
+            ),
+            ("x_relationship_type", StringProperty(required=True)),
         ]
     )
 

@@ -55,7 +55,6 @@ from .Transformer import Transformer
 
 from .TransmissionLine import TransmissionLine
 
-
 # Resolve forward references
 
 

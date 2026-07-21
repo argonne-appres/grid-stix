@@ -128,7 +128,6 @@ from .VerifiesIdentityOfRelationship import VerifiesIdentityOfRelationship
 
 from .WithinSecurityZoneRelationship import WithinSecurityZoneRelationship
 
-
 # Resolve forward references
 
 

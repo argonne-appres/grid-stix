@@ -10,7 +10,6 @@ It contains Python classes corresponding to OWL classes in the ontology.
 
 from .PhysicalSecurityContext import PhysicalSecurityContext
 
-
 # Public API
 __all__ = [
     "PhysicalSecurityContext",

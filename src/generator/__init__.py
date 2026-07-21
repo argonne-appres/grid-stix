@@ -40,7 +40,6 @@ from .gen_code import CodeGenerator
 from .optimise_ir import IROptimizer
 from .pipeline import generate_python_classes, GenerationPipelineError
 
-
 # Public API
 __all__ = [
     "generate_python_classes",

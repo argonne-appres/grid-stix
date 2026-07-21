@@ -27,14 +27,12 @@ class TestGenerationPipeline:
 
             # Create a minimal test ontology file
             with open(ontology_path, "w") as f:
-                f.write(
-                    """<?xml version="1.0"?>
+                f.write("""<?xml version="1.0"?>
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns:owl="http://www.w3.org/2002/07/owl#">
     <owl:Ontology rdf:about="http://test.example.com/ontology"/>
     <owl:Class rdf:about="http://test.example.com/TestClass"/>
-</rdf:RDF>"""
-                )
+</rdf:RDF>""")
 
             with (
                 patch("generator.pipeline.load_ontology") as mock_load,

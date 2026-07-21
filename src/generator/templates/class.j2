@@ -29,18 +29,30 @@ from stix2.utils import NOW  # type: ignore[import-untyped]
 # Forward references will be resolved after all classes are defined
 {% endif %}
 
+{% set is_relationship = (class_def.name == "GridRelationship" or "Relationship" in class_def.name) %}
+{% if is_relationship %}
+from ..base import GridReferenceProperty
+
+{% endif %}
+{% set relationship_ref_attrs = ["source_ref", "target_ref", "relationship_type"] %}
 class {{ class_def.name }}({{ class_def.bases | join(', ') }}):
     """
     {{ class_def.description or "Grid-STIX class: " + class_def.name }}
     {% if class_def.is_abstract %}
-    
+
     This is an abstract class - it should not be instantiated directly.
     {% endif %}
     """
-    
+
     # STIX type identifier for this Grid-STIX object
     _type = 'x-grid-{{ (class_def.owl_fragment if class_def.owl_fragment else class_def.name.lower()).replace("_", "-") }}'
-    
+{% if is_relationship %}
+
+    # STIX 2.1 forbids relationship endpoints from being SROs, Bundles,
+    # Language Content, or Marking Definitions (mirrors stix2.v21.sro.Relationship)
+    _invalid_source_target_types = ['bundle', 'language-content', 'marking-definition', 'relationship', 'sighting']
+{% endif %}
+
     # STIX properties definition following official STIX patterns
     _properties = OrderedDict([
         ('type', TypeProperty(_type, spec_version='2.1')),
@@ -57,12 +69,16 @@ class {{ class_def.name }}({{ class_def.bases | join(', ') }}):
         ('x_grid_component_type', StringProperty()),
         ('x_criticality_level', IntegerProperty()),
 {% for attr in class_def.attrs %}
+{% if not (is_relationship and attr.name in relationship_ref_attrs) %}
         ('x_{{ attr.name }}', {% if attr.mult in ["+", "*"] %}ListProperty({% endif %}{% if attr.range == "str" %}StringProperty(){% elif attr.range == "int" %}IntegerProperty(){% elif attr.range == "float" %}FloatProperty(){% elif attr.range == "bool" %}BooleanProperty(){% else %}StringProperty(){% endif %}{% if attr.mult in ["+", "*"] %}){% endif %}),
+{% endif %}
 {% endfor %}
-{% if class_def.name == "GridRelationship" or "Relationship" in class_def.name %}
-        ('x_source_ref', StringProperty()),
-        ('x_target_ref', StringProperty()),
-        ('x_relationship_type', StringProperty()),
+{% if is_relationship %}
+        # References the SDO/SCO endpoints of this relationship; STIX 2.1 requires
+        # these to be validated STIX identifiers, not arbitrary strings
+        ('x_source_ref', GridReferenceProperty(spec_version='2.1', invalid_types=_invalid_source_target_types, required=True)),
+        ('x_target_ref', GridReferenceProperty(spec_version='2.1', invalid_types=_invalid_source_target_types, required=True)),
+        ('x_relationship_type', StringProperty(required=True)),
 {% endif %}
     ])
     
