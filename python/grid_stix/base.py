@@ -812,6 +812,23 @@ IDENTITY_PROPERTY_CONFIG = {
         "x_monitored_area",
         "x_pmu_count",
     ],
+    # Declaration/Discrepancy comparison model (core/grid-stix-2.1-declarations.owl)
+    "x-grid-declaration": [
+        "x_declared_entity_ref",
+        "x_declaration_source",
+        "x_declared_as_of",
+        "x_declared_value",
+    ],
+    "x-grid-discrepancy": [
+        "x_compares_declaration",
+        "x_compares_evidence",
+        "x_discrepancy_type",
+    ],
+    "x-grid-lifecycle-event": [
+        "x_event_entity_ref",
+        "x_event_type",
+        "x_event_evidence_ref",
+    ],
 }
 
 

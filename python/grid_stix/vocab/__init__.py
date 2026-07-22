@@ -80,6 +80,9 @@ from .InspectionTypeOv import InspectionTypeOv
 from .InterconnectionLevelOv import InterconnectionLevelOv
 
 
+from .LifecycleEventTypeOv import LifecycleEventTypeOv
+
+
 from .MaintenanceStatusOv import MaintenanceStatusOv
 
 
@@ -189,6 +192,7 @@ __all__ = [
     "IncidentResponseStatusOv",
     "InspectionTypeOv",
     "InterconnectionLevelOv",
+    "LifecycleEventTypeOv",
     "MaintenanceStatusOv",
     "MaintenanceTypeOv",
     "MonitoringLevelOv",

@@ -1839,4 +1839,54 @@
     <rdfs:label>smr</rdfs:label>
     <rdfs:comment>Small Modular Reactor, a deployment-scale category that may use any of the above core technologies.</rdfs:comment>
   </owl:NamedIndividual>
+
+  <!-- =============================================== -->
+  <!-- LIFECYCLE EVENT TYPE -->
+  <!-- =============================================== -->
+  <!-- Domain-agnostic: the typed transition signal extracted from a single -->
+  <!-- piece of independently observed evidence, as compared against a -->
+  <!-- declaration (declarations.owl#lifecycle-event). Distinct from -->
+  <!-- discrepancy_type_ov, which is the aggregate outcome of comparing a -->
+  <!-- declaration against ALL such events. -->
+
+  <owl:Class rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#lifecycle_event_type_ov">
+    <rdfs:label>lifecycle_event_type_ov</rdfs:label>
+    <rdfs:comment>Open vocabulary for the kind of lifecycle transition a piece of observed evidence describes.</rdfs:comment>
+  </owl:Class>
+
+  <owl:NamedIndividual rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#lifecycle-event-type-construction-start">
+    <rdf:type rdf:resource="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#lifecycle_event_type_ov"/>
+    <rdfs:label>construction_start</rdfs:label>
+    <rdfs:comment>Evidence that construction of the entity has begun.</rdfs:comment>
+  </owl:NamedIndividual>
+
+  <owl:NamedIndividual rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#lifecycle-event-type-construction-cancelled">
+    <rdf:type rdf:resource="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#lifecycle_event_type_ov"/>
+    <rdfs:label>construction_cancelled</rdfs:label>
+    <rdfs:comment>Evidence that construction of the entity has been cancelled or abandoned.</rdfs:comment>
+  </owl:NamedIndividual>
+
+  <owl:NamedIndividual rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#lifecycle-event-type-criticality">
+    <rdf:type rdf:resource="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#lifecycle_event_type_ov"/>
+    <rdfs:label>criticality</rdfs:label>
+    <rdfs:comment>Evidence that the entity has reached initial criticality.</rdfs:comment>
+  </owl:NamedIndividual>
+
+  <owl:NamedIndividual rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#lifecycle-event-type-commercial-operation">
+    <rdf:type rdf:resource="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#lifecycle_event_type_ov"/>
+    <rdfs:label>commercial_operation</rdfs:label>
+    <rdfs:comment>Evidence that the entity has begun commercial operation.</rdfs:comment>
+  </owl:NamedIndividual>
+
+  <owl:NamedIndividual rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#lifecycle-event-type-retirement-announced">
+    <rdf:type rdf:resource="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#lifecycle_event_type_ov"/>
+    <rdfs:label>retirement_announced</rdfs:label>
+    <rdfs:comment>Evidence that retirement or permanent shutdown has been announced but not yet completed.</rdfs:comment>
+  </owl:NamedIndividual>
+
+  <owl:NamedIndividual rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#lifecycle-event-type-permanent-shutdown">
+    <rdf:type rdf:resource="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#lifecycle_event_type_ov"/>
+    <rdfs:label>permanent_shutdown</rdfs:label>
+    <rdfs:comment>Evidence that the entity has been permanently shut down.</rdfs:comment>
+  </owl:NamedIndividual>
 </rdf:RDF>

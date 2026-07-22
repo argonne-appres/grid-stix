@@ -1,9 +1,9 @@
 """
-The typed outcome of comparing a Declaration against independently observed evidence: agreement, contradiction, or a lead/lag in timing.
+Open vocabulary for the kind of lifecycle transition a piece of observed evidence describes.
 
 This class was automatically generated from the Grid-STIX ontology.
 
-Namespace: http://www.anl.gov/sss/grid-stix-2.1-declarations.owl
+Namespace: http://www.anl.gov/sss/grid-stix-2.1-vocab.owl
 
 """
 
@@ -27,23 +27,17 @@ from stix2.utils import NOW  # type: ignore[import-untyped]
 
 # External imports
 
-from ..base import GridSTIXDomainObject
-
-from .Declaration import Declaration
-
-from ..vocab import DiscrepancyTypeOv
-
-from .LifecycleEvent import LifecycleEvent
+from ..base import GridSTIXObservableObject
 
 
-class Discrepancy(GridSTIXDomainObject):
+class LifecycleEventTypeOv(GridSTIXObservableObject):
     """
-    The typed outcome of comparing a Declaration against independently observed evidence: agreement, contradiction, or a lead/lag in timing.
+    Open vocabulary for the kind of lifecycle transition a piece of observed evidence describes.
 
     """
 
     # STIX type identifier for this Grid-STIX object
-    _type = "x-grid-discrepancy"
+    _type = "x-grid-lifecycle-event-type-ov"
 
     # STIX properties definition following official STIX patterns
     _properties = OrderedDict(
@@ -75,18 +69,11 @@ class Discrepancy(GridSTIXDomainObject):
             ("x_compliance_framework", ListProperty(StringProperty)),
             ("x_grid_component_type", StringProperty()),
             ("x_criticality_level", IntegerProperty()),
-            ("x_compares_declaration", ListProperty(StringProperty())),
-            ("x_compares_events", ListProperty(StringProperty())),
-            ("x_compares_evidence", ListProperty(StringProperty())),
-            ("x_discrepancy_type", ListProperty(StringProperty())),
-            ("x_confidence", ListProperty(IntegerProperty())),
-            ("x_declared_state", ListProperty(StringProperty())),
-            ("x_implied_state", ListProperty(StringProperty())),
         ]
     )
 
     def __init__(self, **kwargs: Any) -> None:
-        """Initialize Discrepancy with Grid-STIX properties."""
+        """Initialize LifecycleEventTypeOv with Grid-STIX properties."""
         # Set STIX type if not provided
         if "type" not in kwargs:
             kwargs["type"] = self._type
