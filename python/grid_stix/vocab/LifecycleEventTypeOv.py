@@ -27,10 +27,10 @@ from stix2.utils import NOW  # type: ignore[import-untyped]
 
 # External imports
 
-from ..base import GridSTIXObservableObject
+from ..base import GridSTIXDomainObject
 
 
-class LifecycleEventTypeOv(GridSTIXObservableObject):
+class LifecycleEventTypeOv(GridSTIXDomainObject):
     """
     Open vocabulary for the kind of lifecycle transition a piece of observed evidence describes.
 

@@ -430,8 +430,24 @@ class IRBuilder:
         if "relationship" in class_name:
             return "GridSTIXRelationshipObject"
 
-        # Observable objects (events, telemetry, etc.)
-        if any(
+        # Open-vocabulary classes (e.g. discrepancy_type_ov, lifecycle_event_type_ov)
+        # are always domain objects regardless of what their name otherwise
+        # matches below (e.g. "event" in lifecycle_event_type_ov) -- a vocabulary
+        # container is not an instance of the thing the vocabulary describes.
+        # Checked before the observable-keyword match so it takes precedence.
+        if class_name.endswith("_ov"):
+            return "GridSTIXDomainObject"
+
+        # Observable objects (events, telemetry, etc.) -- scoped to the
+        # events-observables module. Elsewhere, "event" in a class name does
+        # not imply a raw technical observable: declarations.owl's
+        # lifecycle-event is a domain-level claim/interpretation extracted
+        # from evidence (like Declaration/Discrepancy, its siblings in that
+        # module), not an instrument reading.
+        # base_iri carries a trailing "#" (confirmed empirically), so match by
+        # substring rather than endswith.
+        namespace = getattr(cls.namespace, "base_iri", "")
+        if "events-observables.owl" in namespace and any(
             term in class_name
             for term in ["event", "telemetry", "traffic", "observable"]
         ):
