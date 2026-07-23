@@ -104,6 +104,9 @@ from .OTDeviceTypeOv import OTDeviceTypeOv
 from .OperationalStatusOv import OperationalStatusOv
 
 
+from .OrganizationRoleOv import OrganizationRoleOv
+
+
 from .OutageCauseOv import OutageCauseOv
 
 
@@ -200,6 +203,7 @@ __all__ = [
     "NuclearMaterialTypeOv",
     "OTDeviceTypeOv",
     "OperationalStatusOv",
+    "OrganizationRoleOv",
     "OutageCauseOv",
     "OutageTypeOv",
     "PotentialImpactOv",
