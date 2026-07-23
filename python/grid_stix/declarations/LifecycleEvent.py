@@ -27,14 +27,14 @@ from stix2.utils import NOW  # type: ignore[import-untyped]
 
 # External imports
 
-from ..base import GridSTIXObservableObject
+from ..base import GridSTIXDomainObject
 
 from ..vocab import LifecycleEventTypeOv
 
 from ..assets import PhysicalAsset
 
 
-class LifecycleEvent(GridSTIXObservableObject):
+class LifecycleEvent(GridSTIXDomainObject):
     """
     A typed transition signal extracted from a single piece of independently observed evidence, comparable against a Declaration. Domain-agnostic, like declaration/discrepancy: the same shape (a dated, typed, evidence-bound claim about a state transition) applies beyond reactor lifecycle status.
 
