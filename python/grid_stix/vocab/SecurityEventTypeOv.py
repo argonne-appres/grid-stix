@@ -25,13 +25,12 @@ from stix2.properties import (  # type: ignore[import-untyped]
 )
 from stix2.utils import NOW  # type: ignore[import-untyped]
 
-
 # External imports
 
-from ..base import GridSTIXObservableObject
+from ..base import GridSTIXDomainObject
 
 
-class SecurityEventTypeOv(GridSTIXObservableObject):
+class SecurityEventTypeOv(GridSTIXDomainObject):
     """
     Open vocabulary for security event types
 

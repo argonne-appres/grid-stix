@@ -110,7 +110,14 @@ class TestIRBuilder:
             assert builder._sanitize_attr_name("type") == "type_attr"
 
     def test_determine_appropriate_base_class(self):
-        """Test base class determination logic."""
+        """Test base class determination logic.
+
+        namespace.base_iri must be a real string on every mock: the observable
+        branch checks substring membership on it (base_iri carries a trailing
+        "#", confirmed empirically against the actual ontology, so this is a
+        substring check, not endswith), which raises TypeError against an
+        unconfigured Mock rather than falling through to the "" default.
+        """
         with tempfile.TemporaryDirectory() as temp_dir:
             config_path = Path(temp_dir) / "config.yml"
 
@@ -119,15 +126,36 @@ class TestIRBuilder:
 
             builder = IRBuilder(str(config_path))
 
+            other_namespace = "http://www.anl.gov/sss/grid-stix-2.1-declarations.owl#"
+            events_namespace = (
+                "http://www.anl.gov/sss/grid-stix-2.1-events-observables.owl#"
+            )
+
             # Mock OWL class objects
             relationship_class = Mock()
             relationship_class.name = "TestRelationship"
+            relationship_class.namespace.base_iri = other_namespace
 
             event_class = Mock()
             event_class.name = "TestEvent"
+            event_class.namespace.base_iri = events_namespace
 
             domain_class = Mock()
             domain_class.name = "TestDomain"
+            domain_class.namespace.base_iri = other_namespace
+
+            # An "event"-named class outside events-observables.owl is a
+            # domain-level claim/interpretation (e.g. declarations.owl's
+            # lifecycle-event), not a raw technical observable.
+            event_outside_module_class = Mock()
+            event_outside_module_class.name = "lifecycle-event"
+            event_outside_module_class.namespace.base_iri = other_namespace
+
+            # Open-vocabulary classes are always domain objects, regardless of
+            # namespace or "event" appearing in the name.
+            vocab_class = Mock()
+            vocab_class.name = "lifecycle_event_type_ov"
+            vocab_class.namespace.base_iri = events_namespace
 
             # Test base class determination
             assert (
@@ -140,6 +168,14 @@ class TestIRBuilder:
             )
             assert (
                 builder._determine_appropriate_base_class(domain_class)
+                == "GridSTIXDomainObject"
+            )
+            assert (
+                builder._determine_appropriate_base_class(event_outside_module_class)
+                == "GridSTIXDomainObject"
+            )
+            assert (
+                builder._determine_appropriate_base_class(vocab_class)
                 == "GridSTIXDomainObject"
             )
 

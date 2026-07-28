@@ -38,6 +38,9 @@ from .DisasterDeclarationLevelOv import DisasterDeclarationLevelOv
 from .DisasterTypeOv import DisasterTypeOv
 
 
+from .DiscrepancyTypeOv import DiscrepancyTypeOv
+
+
 from .EmergencyStatusOv import EmergencyStatusOv
 
 
@@ -77,6 +80,9 @@ from .InspectionTypeOv import InspectionTypeOv
 from .InterconnectionLevelOv import InterconnectionLevelOv
 
 
+from .LifecycleEventTypeOv import LifecycleEventTypeOv
+
+
 from .MaintenanceStatusOv import MaintenanceStatusOv
 
 
@@ -98,6 +104,9 @@ from .OTDeviceTypeOv import OTDeviceTypeOv
 from .OperationalStatusOv import OperationalStatusOv
 
 
+from .OrganizationRoleOv import OrganizationRoleOv
+
+
 from .OutageCauseOv import OutageCauseOv
 
 
@@ -105,6 +114,9 @@ from .OutageTypeOv import OutageTypeOv
 
 
 from .PotentialImpactOv import PotentialImpactOv
+
+
+from .PowerReactorTypeOv import PowerReactorTypeOv
 
 
 from .RadiationDetectionMethodOv import RadiationDetectionMethodOv
@@ -157,7 +169,6 @@ from .VoltageStatusOv import VoltageStatusOv
 
 from .WeatherTypeOv import WeatherTypeOv
 
-
 # Public API
 __all__ = [
     "AlertLevelOv",
@@ -170,6 +181,7 @@ __all__ = [
     "DetectionMethodOv",
     "DisasterDeclarationLevelOv",
     "DisasterTypeOv",
+    "DiscrepancyTypeOv",
     "EmergencyStatusOv",
     "EmergencyTypeOv",
     "EnrichmentLevelOv",
@@ -183,6 +195,7 @@ __all__ = [
     "IncidentResponseStatusOv",
     "InspectionTypeOv",
     "InterconnectionLevelOv",
+    "LifecycleEventTypeOv",
     "MaintenanceStatusOv",
     "MaintenanceTypeOv",
     "MonitoringLevelOv",
@@ -190,9 +203,11 @@ __all__ = [
     "NuclearMaterialTypeOv",
     "OTDeviceTypeOv",
     "OperationalStatusOv",
+    "OrganizationRoleOv",
     "OutageCauseOv",
     "OutageTypeOv",
     "PotentialImpactOv",
+    "PowerReactorTypeOv",
     "RadiationDetectionMethodOv",
     "RegulatoryClassificationOv",
     "RenewableTypeOv",

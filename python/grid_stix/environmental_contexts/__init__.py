@@ -13,7 +13,6 @@ from .NaturalDisasterContext import NaturalDisasterContext
 
 from .WeatherContext import WeatherContext
 
-
 # Public API
 __all__ = [
     "NaturalDisasterContext",

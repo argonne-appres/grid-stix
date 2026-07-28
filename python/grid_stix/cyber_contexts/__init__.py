@@ -58,7 +58,6 @@ from .RiskAssessment import RiskAssessment
 
 from .TrustBroker import TrustBroker
 
-
 # Public API
 __all__ = [
     "ApiEndpoint",

@@ -47,7 +47,6 @@ from jinja2 import Environment, FileSystemLoader
 from .build_ir import ClassDef
 from .optimise_ir import OptimizedIR
 
-
 logger = logging.getLogger(__name__)
 
 
@@ -90,6 +89,7 @@ class CodeGenerator:
         try:
             self.class_template = self.env.get_template("class.j2")
             self.init_template = self.env.get_template("__init__.j2")
+            self.root_init_template = self.env.get_template("grid_stix_root_init.py.j2")
         except jinja2.TemplateNotFound as e:
             raise CodeGenerationError(f"Template not found: {e}") from e
 
@@ -139,6 +139,13 @@ class CodeGenerator:
 
             # Generate __init__.py files
             self._generate_init_files(optimized_ir)
+
+            # Generate the top-level package __init__.py (exposes __version__).
+            # _generate_init_files above only fills in submodule inits (e.g.
+            # grid_stix.components) — no class is ever defined directly in the
+            # bare "grid_stix" module, so the root __init__.py would otherwise
+            # stay the empty file _create_directory_structure touch()-es.
+            self._generate_root_init_file()
 
             # Generate base classes module
             self._generate_base_classes()
@@ -364,6 +371,16 @@ class CodeGenerator:
             # Write to file
             with open(init_path, "w", encoding="utf-8") as f:
                 f.write(init_code)
+
+    def _generate_root_init_file(self) -> None:
+        """Generate the top-level grid_stix/__init__.py (exposes __version__)."""
+        logger.info("Generating root package __init__.py...")
+
+        root_init_path = self.output_dir / "grid_stix" / "__init__.py"
+        root_init_code = self.root_init_template.render()
+
+        with open(root_init_path, "w", encoding="utf-8") as f:
+            f.write(root_init_code)
 
     def _generate_base_classes(self) -> None:
         """Generate the base classes module."""

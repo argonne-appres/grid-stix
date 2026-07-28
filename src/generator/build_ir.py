@@ -42,7 +42,6 @@ import owlready2
 import yaml
 from owlready2 import World
 
-
 logger = logging.getLogger(__name__)
 
 
@@ -431,8 +430,24 @@ class IRBuilder:
         if "relationship" in class_name:
             return "GridSTIXRelationshipObject"
 
-        # Observable objects (events, telemetry, etc.)
-        if any(
+        # Open-vocabulary classes (e.g. discrepancy_type_ov, lifecycle_event_type_ov)
+        # are always domain objects regardless of what their name otherwise
+        # matches below (e.g. "event" in lifecycle_event_type_ov) -- a vocabulary
+        # container is not an instance of the thing the vocabulary describes.
+        # Checked before the observable-keyword match so it takes precedence.
+        if class_name.endswith("_ov"):
+            return "GridSTIXDomainObject"
+
+        # Observable objects (events, telemetry, etc.) -- scoped to the
+        # events-observables module. Elsewhere, "event" in a class name does
+        # not imply a raw technical observable: declarations.owl's
+        # lifecycle-event is a domain-level claim/interpretation extracted
+        # from evidence (like Declaration/Discrepancy, its siblings in that
+        # module), not an instrument reading.
+        # base_iri carries a trailing "#" (confirmed empirically), so match by
+        # substring rather than endswith.
+        namespace = getattr(cls.namespace, "base_iri", "")
+        if "events-observables.owl" in namespace and any(
             term in class_name
             for term in ["event", "telemetry", "traffic", "observable"]
         ):
@@ -493,6 +508,19 @@ class IRBuilder:
                         f"Added restriction-based property to class {cls.name}"
                     )
 
+        # source_ref/target_ref/relationship_type are relationship-endpoint
+        # restrictions handled explicitly by the class template (as required
+        # GridReferenceProperty/StringProperty fields with STIX endpoint-type
+        # constraints); keeping them here as well would duplicate the emitted
+        # property and pull in unused imports for their restriction's filler
+        # class.
+        if "relationship" in cls.name.lower():
+            attrs = [
+                attr
+                for attr in attrs
+                if attr.name not in {"source_ref", "target_ref", "relationship_type"}
+            ]
+
         logger.debug(f"Extracted {len(attrs)} attributes for class {cls.name}")
         return attrs
 
@@ -542,31 +570,37 @@ class IRBuilder:
             prop = restriction.property
             attr_name = self._sanitize_attr_name(prop.name)
 
-            # Handle different restriction types
-            if hasattr(restriction, "value"):
+            # owlready2.Restriction does not expose "some"/"all"/"exactly"/"min"/"max"
+            # as real attributes -- every restriction only has .property, .type,
+            # .cardinality, and .value (the last resolved lazily by __getattr__
+            # based on .type). The restriction kind must be read from .type and
+            # compared against owlready2's SOME/ONLY/VALUE/EXACTLY/MIN/MAX
+            # constants; hasattr()-based dispatch always matches "value" first
+            # regardless of the actual restriction kind.
+            if restriction.type == owlready2.VALUE:
                 # hasValue restriction
                 range_type = "Any"  # Specific value
                 mult = "1"
-            elif hasattr(restriction, "some"):
+            elif restriction.type == owlready2.SOME:
                 # someValuesFrom restriction
-                range_type = self._get_class_name_from_entity(restriction.some)
+                range_type = self._get_class_name_from_entity(restriction.value)
                 mult = "+"
-            elif hasattr(restriction, "all"):
+            elif restriction.type == owlready2.ONLY:
                 # allValuesFrom restriction
-                range_type = self._get_class_name_from_entity(restriction.all)
+                range_type = self._get_class_name_from_entity(restriction.value)
                 mult = "*"
-            elif hasattr(restriction, "exactly"):
+            elif restriction.type == owlready2.EXACTLY:
                 # exact cardinality
                 range_type = self._determine_range_type(prop)
-                mult = "1" if restriction.exactly == 1 else "+"
-            elif hasattr(restriction, "min"):
+                mult = "1" if restriction.cardinality == 1 else "+"
+            elif restriction.type == owlready2.MIN:
                 # min cardinality
                 range_type = self._determine_range_type(prop)
-                mult = "+" if restriction.min > 0 else "*"
-            elif hasattr(restriction, "max"):
+                mult = "+" if restriction.cardinality > 0 else "*"
+            elif restriction.type == owlready2.MAX:
                 # max cardinality
                 range_type = self._determine_range_type(prop)
-                mult = "?" if restriction.max == 1 else "*"
+                mult = "?" if restriction.cardinality == 1 else "*"
             else:
                 # Generic restriction
                 range_type = self._determine_range_type(prop)

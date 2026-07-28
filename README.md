@@ -11,7 +11,11 @@ Grid-STIX is a comprehensive extension of the STIX (Structured Threat Informatio
 - **Advanced Security Modeling**: Attack patterns, vulnerabilities, mitigations, and supply chain risks
 - **Critical Grid Relationships**: Power flow, protection, control, and synchronization relationships
 - **Supply Chain Security**: Supplier modeling, country of origin tracking, and risk assessment
-- **Protocol Support**: DNP3, Modbus, IEC 61850, IEC 60870-5-104, OPC-UA, and IEEE standards
+- **Protocol Support**: DNP3, Modbus, IEC 61850, IEC 60870-5 and IEC 60870-5-104, IEC 62351, OPC-UA,
+  BACnet, EtherNet/IP, HART, PROFINET, POWERLINK, SERCOS, and IEEE C37.118
+- **Nuclear Safeguards**: Reactor and fuel-cycle asset modeling, IAEA safeguards agreement types, and
+  a domain-agnostic Declaration/Discrepancy/LifecycleEvent model for comparing declared vs.
+  observed facility state
 - **Python Code Generation**: Automated STIX-compliant Python class generation from ontologies
 - **Interactive Visualization**: Enhanced HTML network graphs with grid-specific categorization
 - **STIX 2.1 Compliance**: Full compatibility with STIX threat intelligence ecosystem
@@ -31,7 +35,9 @@ grid-stix/
 │   │   └── grid-stix-2.1-physical-contexts.owl      # Physical security contexts
 │   ├── core/                                 # Core ontology components
 │   │   ├── grid-stix-2.1-assets.owl          # Assets, suppliers, supply chain
+│   │   ├── grid-stix-2.1-asset-types.owl     # Asset-type classification
 │   │   ├── grid-stix-2.1-components.owl      # Grid components, OT devices, sensors
+│   │   ├── grid-stix-2.1-declarations.owl    # Declaration/Discrepancy/LifecycleEvent model
 │   │   └── grid-stix-2.1-relationships.owl   # Power flow, protection, control
 │   ├── nuclear/                              # Nuclear safeguards and security
 │   │   └── grid-stix-2.1-nuclear-safeguards.owl  # Nuclear facility security
@@ -187,16 +193,21 @@ When contributing to Grid-STIX:
    - Assets & infrastructure → `ontology/core/grid-stix-2.1-assets.owl`
    - Grid equipment → `ontology/core/grid-stix-2.1-components.owl`
    - Relationships → `ontology/core/grid-stix-2.1-relationships.owl`
+   - Declared-vs-observed comparison model → `ontology/core/grid-stix-2.1-declarations.owl`
+   - Nuclear safeguards → `ontology/nuclear/grid-stix-2.1-nuclear-safeguards.owl`
    - Vocabularies → `ontology/vocabularies/grid-stix-2.1-vocab.owl`
 
 ## Current Ontology Status
 
 - **Classes**: 230+ comprehensive classes including grid assets, zero trust components, and AMI infrastructure
 - **Relationships**: 40+ critical grid relationships including power flow, protection, and trust verification
-- **Protocols**: Complete coverage of major ICS/SCADA protocols (DNP3, Modbus, IEC standards)
+- **Protocols**: 13 ICS/SCADA and grid protocols (DNP3, Modbus, IEC 61850/60870-5/60870-5-104/62351,
+  OPC-UA, BACnet, EtherNet/IP, HART, PROFINET, POWERLINK, SERCOS, IEEE C37.118)
 - **Zero Trust**: Policy decision points, enforcement points, trust brokers, and continuous monitoring
 - **AMI Infrastructure**: Head-end systems, mesh networks, meter data management systems
 - **Supply Chain**: Comprehensive supplier risk and verification modeling
+- **Nuclear Safeguards**: Reactor/fuel-cycle assets, IAEA safeguards agreement types, and a
+  domain-agnostic Declaration/Discrepancy/LifecycleEvent model for comparing declared vs. observed state
 - **Python Generation**: Full STIX-compliant Python class generation with all properties
 - **Validation**: Clean ontology validation with comprehensive consistency checking
 

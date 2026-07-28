@@ -25,10 +25,11 @@ from stix2.properties import (  # type: ignore[import-untyped]
 )
 from stix2.utils import NOW  # type: ignore[import-untyped]
 
-
 # External imports
 
 from ..base import GridSTIXDomainObject
+
+from ..vocab import PowerReactorTypeOv
 
 
 class NuclearPowerPlant(GridSTIXDomainObject):
@@ -70,6 +71,7 @@ class NuclearPowerPlant(GridSTIXDomainObject):
             ("x_compliance_framework", ListProperty(StringProperty)),
             ("x_grid_component_type", StringProperty()),
             ("x_criticality_level", IntegerProperty()),
+            ("x_reactor_technology", ListProperty(StringProperty())),
             ("x_capacity_mw", ListProperty(FloatProperty())),
             ("x_plant_id", ListProperty(StringProperty())),
             ("x_reactor_core_temperature", ListProperty(FloatProperty())),

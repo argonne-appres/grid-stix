@@ -5,7 +5,7 @@ channels:
 dependencies:
   - python=3.12
   - bandit=1.8
-  - black=25.1
+  - black=26.3
   - cachecontrol-with-filecache=0.14  # For pip-audit
   - jinja2=3.1
   - mypy=1.17
@@ -16,15 +16,27 @@ dependencies:
   - plotly=6.1
   - pydantic=2.11
   - pygraphviz=1.14
-  - pytest=8.4
-  - pytest-asyncio=1.0
+  - pytest=9.0
+  - pytest-asyncio=1.4
   - pytest-cov=6.1
   - pytest-mock=3.14
   - rdflib=7.1
   - scipy=1.15
   - twine=6.2
-  - pip=25.3
+  - pip=26.1
   - pip:
-    - stix2~=3.0.1
+    # Exact-pinned: stix2 3.0.2 has an upstream bug where FloatProperty and
+    # BooleanProperty were not updated for the new interoperability parameter
+    # threaded through Property.clean() (added in PR #620), so ListProperty
+    # wraps of either type raise InvalidValueError. Loosen back to ~=3.0.1
+    # once a stix2 release fixes this (unreported upstream as of 2026-07-21).
+    - stix2==3.0.1
     - build~=1.3.0
     - urllib3>=2.6.0
+    # Transitive dev-only dependency (pulled in by a conda-forge package, not
+    # a runtime dependency of grid-stix itself — MANIFEST.in ships only
+    # python/*.py, so this never reaches end users). Pinned to close 4 known
+    # CVEs in gitpython<3.1.55 (GHSA-fjr4-x663-mwxc, GHSA-6p8h-3wgx-97gf,
+    # GHSA-r9mr-m37c-5fr3, GHSA-94p4-4cq8-9g67 — unsafe clone/diff options),
+    # found by `make security` on 2026-07-28.
+    - gitpython>=3.1.55

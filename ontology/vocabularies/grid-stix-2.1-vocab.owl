@@ -1733,4 +1733,246 @@
     <rdfs:label>measurement_discrepancy</rdfs:label>
     <rdfs:comment>Significant discrepancy in nuclear material measurements.</rdfs:comment>
   </owl:NamedIndividual>
+
+  <owl:Class rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#discrepancy_type_ov">
+    <rdfs:label>discrepancy_type_ov</rdfs:label>
+    <rdfs:comment>Open vocabulary for how a declared value relates to independently observed evidence. Domain-agnostic: applies to any Declaration/Discrepancy comparison, not a specific facility or asset type.</rdfs:comment>
+  </owl:Class>
+
+  <owl:NamedIndividual rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#discrepancy-type-contradiction">
+    <rdf:type rdf:resource="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#discrepancy_type_ov"/>
+    <rdfs:label>contradiction</rdfs:label>
+    <rdfs:comment>The declared value is incompatible with the observed evidence.</rdfs:comment>
+  </owl:NamedIndividual>
+
+  <owl:NamedIndividual rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#discrepancy-type-lead">
+    <rdf:type rdf:resource="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#discrepancy_type_ov"/>
+    <rdfs:label>lead</rdfs:label>
+    <rdfs:comment>The observed evidence shows a committed transition the declared value has not yet reflected.</rdfs:comment>
+  </owl:NamedIndividual>
+
+  <owl:NamedIndividual rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#discrepancy-type-lag">
+    <rdf:type rdf:resource="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#discrepancy_type_ov"/>
+    <rdfs:label>lag</rdfs:label>
+    <rdfs:comment>The declared value shows a transition the observed evidence has not yet caught up to or contradicts in timing.</rdfs:comment>
+  </owl:NamedIndividual>
+
+  <owl:NamedIndividual rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#discrepancy-type-agreement">
+    <rdf:type rdf:resource="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#discrepancy_type_ov"/>
+    <rdfs:label>agreement</rdfs:label>
+    <rdfs:comment>The declared value and observed evidence are consistent (true negative).</rdfs:comment>
+  </owl:NamedIndividual>
+
+  <!-- Additional nuclear material types (padding existing vocabulary; -->
+  <!-- uranium/plutonium/spent-fuel forms already covered above) -->
+  <owl:NamedIndividual rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#nuclear-material-uranium-hexafluoride">
+    <rdf:type rdf:resource="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#nuclear_material_type_ov"/>
+    <rdfs:label>uranium_hexafluoride</rdfs:label>
+    <rdfs:comment>Uranium hexafluoride (UF6), the feedstock form used in enrichment processes.</rdfs:comment>
+  </owl:NamedIndividual>
+
+  <owl:NamedIndividual rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#nuclear-material-fresh-fuel">
+    <rdf:type rdf:resource="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#nuclear_material_type_ov"/>
+    <rdfs:label>fresh_fuel</rdfs:label>
+    <rdfs:comment>Fabricated reactor fuel assemblies not yet irradiated.</rdfs:comment>
+  </owl:NamedIndividual>
+
+  <owl:NamedIndividual rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#nuclear-material-mox-fuel">
+    <rdf:type rdf:resource="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#nuclear_material_type_ov"/>
+    <rdfs:label>mox_fuel</rdfs:label>
+    <rdfs:comment>Mixed oxide fuel containing both uranium and plutonium oxides.</rdfs:comment>
+  </owl:NamedIndividual>
+
+  <!-- =============================================== -->
+  <!-- POWER REACTOR TECHNOLOGY -->
+  <!-- =============================================== -->
+  <!-- Distinct from components.owl#reactor-type (an existing free-string -->
+  <!-- property that is an identity-contributing field for deterministic -->
+  <!-- UUID generation on nuclear-power-plant instances; changing its value -->
+  <!-- type would change generated IDs for existing objects). This is a new, -->
+  <!-- additive, controlled-vocabulary companion property, not a replacement. -->
+  <!-- Values follow IAEA PRIS reactor-type codes. -->
+
+  <owl:Class rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#power_reactor_type_ov">
+    <rdfs:label>power_reactor_type_ov</rdfs:label>
+    <rdfs:comment>Open vocabulary for power reactor technology, following IAEA PRIS reactor-type codes.</rdfs:comment>
+  </owl:Class>
+
+  <owl:NamedIndividual rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#power-reactor-type-pwr">
+    <rdf:type rdf:resource="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#power_reactor_type_ov"/>
+    <rdfs:label>pwr</rdfs:label>
+    <rdfs:comment>Pressurized Water Reactor, the most common power reactor design worldwide.</rdfs:comment>
+  </owl:NamedIndividual>
+
+  <owl:NamedIndividual rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#power-reactor-type-bwr">
+    <rdf:type rdf:resource="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#power_reactor_type_ov"/>
+    <rdfs:label>bwr</rdfs:label>
+    <rdfs:comment>Boiling Water Reactor.</rdfs:comment>
+  </owl:NamedIndividual>
+
+  <owl:NamedIndividual rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#power-reactor-type-phwr">
+    <rdf:type rdf:resource="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#power_reactor_type_ov"/>
+    <rdfs:label>phwr</rdfs:label>
+    <rdfs:comment>Pressurized Heavy Water Reactor (e.g., CANDU design).</rdfs:comment>
+  </owl:NamedIndividual>
+
+  <owl:NamedIndividual rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#power-reactor-type-lwgr">
+    <rdf:type rdf:resource="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#power_reactor_type_ov"/>
+    <rdfs:label>lwgr</rdfs:label>
+    <rdfs:comment>Light Water Graphite Reactor (e.g., RBMK design).</rdfs:comment>
+  </owl:NamedIndividual>
+
+  <owl:NamedIndividual rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#power-reactor-type-gcr">
+    <rdf:type rdf:resource="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#power_reactor_type_ov"/>
+    <rdfs:label>gcr</rdfs:label>
+    <rdfs:comment>Gas-Cooled Reactor, including Advanced Gas-cooled Reactor (AGR) designs.</rdfs:comment>
+  </owl:NamedIndividual>
+
+  <owl:NamedIndividual rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#power-reactor-type-fbr">
+    <rdf:type rdf:resource="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#power_reactor_type_ov"/>
+    <rdfs:label>fbr</rdfs:label>
+    <rdfs:comment>Fast Breeder Reactor / fast neutron reactor.</rdfs:comment>
+  </owl:NamedIndividual>
+
+  <owl:NamedIndividual rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#power-reactor-type-smr">
+    <rdf:type rdf:resource="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#power_reactor_type_ov"/>
+    <rdfs:label>smr</rdfs:label>
+    <rdfs:comment>Small Modular Reactor, a deployment-scale category that may use any of the above core technologies.</rdfs:comment>
+  </owl:NamedIndividual>
+
+  <!-- =============================================== -->
+  <!-- LIFECYCLE EVENT TYPE -->
+  <!-- =============================================== -->
+  <!-- Domain-agnostic: the typed transition signal extracted from a single -->
+  <!-- piece of independently observed evidence, as compared against a -->
+  <!-- declaration (declarations.owl#lifecycle-event). Distinct from -->
+  <!-- discrepancy_type_ov, which is the aggregate outcome of comparing a -->
+  <!-- declaration against ALL such events. -->
+
+  <owl:Class rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#lifecycle_event_type_ov">
+    <rdfs:label>lifecycle_event_type_ov</rdfs:label>
+    <rdfs:comment>Open vocabulary for the kind of lifecycle transition a piece of observed evidence describes.</rdfs:comment>
+  </owl:Class>
+
+  <owl:NamedIndividual rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#lifecycle-event-type-construction-start">
+    <rdf:type rdf:resource="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#lifecycle_event_type_ov"/>
+    <rdfs:label>construction_start</rdfs:label>
+    <rdfs:comment>Evidence that construction of the entity has begun.</rdfs:comment>
+  </owl:NamedIndividual>
+
+  <owl:NamedIndividual rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#lifecycle-event-type-construction-cancelled">
+    <rdf:type rdf:resource="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#lifecycle_event_type_ov"/>
+    <rdfs:label>construction_cancelled</rdfs:label>
+    <rdfs:comment>Evidence that construction of the entity has been cancelled or abandoned.</rdfs:comment>
+  </owl:NamedIndividual>
+
+  <owl:NamedIndividual rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#lifecycle-event-type-criticality">
+    <rdf:type rdf:resource="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#lifecycle_event_type_ov"/>
+    <rdfs:label>criticality</rdfs:label>
+    <rdfs:comment>Evidence that the entity has reached initial criticality.</rdfs:comment>
+  </owl:NamedIndividual>
+
+  <owl:NamedIndividual rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#lifecycle-event-type-commercial-operation">
+    <rdf:type rdf:resource="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#lifecycle_event_type_ov"/>
+    <rdfs:label>commercial_operation</rdfs:label>
+    <rdfs:comment>Evidence that the entity has begun commercial operation.</rdfs:comment>
+  </owl:NamedIndividual>
+
+  <owl:NamedIndividual rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#lifecycle-event-type-retirement-announced">
+    <rdf:type rdf:resource="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#lifecycle_event_type_ov"/>
+    <rdfs:label>retirement_announced</rdfs:label>
+    <rdfs:comment>Evidence that retirement or permanent shutdown has been announced but not yet completed.</rdfs:comment>
+  </owl:NamedIndividual>
+
+  <owl:NamedIndividual rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#lifecycle-event-type-permanent-shutdown">
+    <rdf:type rdf:resource="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#lifecycle_event_type_ov"/>
+    <rdfs:label>permanent_shutdown</rdfs:label>
+    <rdfs:comment>Evidence that the entity has been permanently shut down.</rdfs:comment>
+  </owl:NamedIndividual>
+
+  <!-- =============================================== -->
+  <!-- ORGANIZATION ROLE -->
+  <!-- =============================================== -->
+  <!-- Domain-agnostic: the role an organization plays with respect to grid or -->
+  <!-- nuclear-safeguards infrastructure. A flat open vocabulary (not a class -->
+  <!-- hierarchy) mirroring this generator's existing _ov conventions -->
+  <!-- (discrepancy_type_ov, power_reactor_type_ov, etc.): individuals here -->
+  <!-- correspond to the leaf classes of a richer Organization type hierarchy -->
+  <!-- explored separately (sg_ai.owl), flattened to fit that convention. -->
+  <!-- Attaches to a real STIX Identity (docs.oasis-open.org/ns/cti/stix/identity) -->
+  <!-- via a custom x_organization_role property; see the organization-role -->
+  <!-- property comment below for why this generator cannot formally attach a -->
+  <!-- property to that external type. -->
+
+  <owl:Class rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#organization_role_ov">
+    <rdfs:label>organization_role_ov</rdfs:label>
+    <rdfs:comment>Open vocabulary for the role an organization plays with respect to grid or nuclear-safeguards infrastructure.</rdfs:comment>
+  </owl:Class>
+
+  <owl:NamedIndividual rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#organization-role-safeguards-organization">
+    <rdf:type rdf:resource="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#organization_role_ov"/>
+    <rdfs:label>safeguards_organization</rdfs:label>
+    <rdfs:comment>International or regional entity responsible for implementing and verifying safeguards agreements (e.g. IAEA, Euratom, ABACC).</rdfs:comment>
+  </owl:NamedIndividual>
+
+  <owl:NamedIndividual rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#organization-role-national-regulator">
+    <rdf:type rdf:resource="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#organization_role_ov"/>
+    <rdfs:label>national_regulator</rdfs:label>
+    <rdfs:comment>National-level nuclear regulatory body with jurisdiction over all nuclear activities in a country (e.g. NRC, ONR, ASN, CNSC).</rdfs:comment>
+  </owl:NamedIndividual>
+
+  <owl:NamedIndividual rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#organization-role-state-regulator">
+    <rdf:type rdf:resource="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#organization_role_ov"/>
+    <rdfs:label>state_regulator</rdfs:label>
+    <rdfs:comment>State, provincial, or regional-level regulatory body with delegated nuclear oversight authority.</rdfs:comment>
+  </owl:NamedIndividual>
+
+  <owl:NamedIndividual rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#organization-role-national-laboratory">
+    <rdf:type rdf:resource="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#organization_role_ov"/>
+    <rdfs:label>national_laboratory</rdfs:label>
+    <rdfs:comment>Government-funded research laboratory conducting nuclear safeguards R and D (e.g. LANL, ORNL, SNL, JRC, JAEA).</rdfs:comment>
+  </owl:NamedIndividual>
+
+  <owl:NamedIndividual rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#organization-role-support-programme">
+    <rdf:type rdf:resource="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#organization_role_ov"/>
+    <rdfs:label>support_programme</rdfs:label>
+    <rdfs:comment>National program providing technical and financial resources to IAEA safeguards development (e.g. USSP, GSSP, CSSP, JSSAP).</rdfs:comment>
+  </owl:NamedIndividual>
+
+  <owl:NamedIndividual rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#organization-role-metrology-institute">
+    <rdf:type rdf:resource="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#organization_role_ov"/>
+    <rdfs:label>metrology_institute</rdfs:label>
+    <rdfs:comment>National or international organization maintaining measurement standards and traceability for safeguards instrumentation (e.g. NIST, PTB, NPL, BIPM).</rdfs:comment>
+  </owl:NamedIndividual>
+
+  <owl:NamedIndividual rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#organization-role-facility-operator">
+    <rdf:type rdf:resource="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#organization_role_ov"/>
+    <rdfs:label>facility_operator</rdfs:label>
+    <rdfs:comment>Organization responsible for day-to-day operation of nuclear or grid facilities under safeguards or regulatory oversight (e.g. utility companies, research reactor operators, fuel cycle facility operators).</rdfs:comment>
+  </owl:NamedIndividual>
+
+  <owl:NamedIndividual rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#organization-role-facility-owner">
+    <rdf:type rdf:resource="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#organization_role_ov"/>
+    <rdfs:label>facility_owner</rdfs:label>
+    <rdfs:comment>Corporate or governmental entity holding legal ownership of a facility. May be same as or different from the facility operator.</rdfs:comment>
+  </owl:NamedIndividual>
+
+  <owl:NamedIndividual rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#organization-role-reactor-vendor">
+    <rdf:type rdf:resource="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#organization_role_ov"/>
+    <rdfs:label>reactor_vendor</rdfs:label>
+    <rdfs:comment>Company designing and supplying nuclear reactor systems -- not a facility operator or owner (e.g. an EPC contractor). Examples: NuScale, Westinghouse, AREVA/Framatome, Rosatom, CNNC.</rdfs:comment>
+  </owl:NamedIndividual>
+
+  <owl:NamedIndividual rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#organization-role-safeguards-equipment-vendor">
+    <rdf:type rdf:resource="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#organization_role_ov"/>
+    <rdfs:label>safeguards_equipment_vendor</rdfs:label>
+    <rdfs:comment>Company manufacturing and supplying safeguards instrumentation and systems (e.g. Mirion Technologies, ORTEC, Aquila Technologies).</rdfs:comment>
+  </owl:NamedIndividual>
+
+  <owl:DatatypeProperty rdf:about="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#organization-role">
+    <rdfs:domain rdf:resource="http://docs.oasis-open.org/ns/cti/stix/identity"/>
+    <rdfs:range rdf:resource="http://www.anl.gov/sss/grid-stix-2.1-vocab.owl#organization_role_ov"/>
+    <rdfs:comment>The organizational role of a STIX Identity, from organization_role_ov. Domain is the real OASIS Identity type, not a grid-stix class -- this generator only materializes properties onto classes it generates, so this declaration is documentation of the intended attachment point, not code-generating. Consumers attach it as a custom x_organization_role property on a constructed Identity (requires allow_custom=True, the same pattern already used for match/threshold/flagged properties on Relationship objects in downstream consumers).</rdfs:comment>
+    <rdfs:label>organization_role</rdfs:label>
+  </owl:DatatypeProperty>
 </rdf:RDF>

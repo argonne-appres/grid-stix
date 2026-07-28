@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "grid-stix"
-version = "2.6.7"
+version = "2.7.0"
 description = "Grid-STIX Electrical Grid Cybersecurity Ontology - STIX extension for critical infrastructure"
 readme = "README.md"
 requires-python = ">=3.12"
@@ -31,7 +31,12 @@ classifiers = [
 ]
 
 dependencies = [
-    "stix2~=3.0.1",
+    # Exact-pinned: stix2 3.0.2 has an upstream bug where FloatProperty and
+    # BooleanProperty were not updated for the new interoperability parameter
+    # threaded through Property.clean() (added in PR #620), so ListProperty
+    # wraps of either type raise InvalidValueError. Loosen back to ~=3.0.1
+    # once a stix2 release fixes this (unreported upstream as of 2026-07-21).
+    "stix2==3.0.1",
 ]
 
 [project.optional-dependencies]

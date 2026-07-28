@@ -25,12 +25,33 @@ from stix2.properties import (  # type: ignore[import-untyped]
     TimestampProperty,
     IDProperty,
     TypeProperty,
+    ReferenceProperty,
 )
 from stix2.utils import NOW  # type: ignore[import-untyped]
 
-
 # Grid-STIX namespace UUID for deterministic UUID generation
 GRID_STIX_NAMESPACE = UUID("6ba7b810-9dad-11d1-80b4-00c04fd430c8")
+
+
+class GridReferenceProperty(ReferenceProperty):  # type: ignore[misc]
+    """
+    ReferenceProperty for Grid-STIX relationship endpoints (x_source_ref/x_target_ref).
+
+    Every Grid-STIX object type uses the custom 'x-grid-' prefix, which the
+    base ReferenceProperty always treats as a customization (has_custom=True)
+    and therefore rejects unless the enclosing object is constructed with
+    allow_custom=True. Since x-grid-* types are Grid-STIX's native, expected
+    reference targets rather than ad hoc customizations, this override still
+    enforces identifier format and endpoint-type constraints (invalid_types)
+    via the parent clean(), but does not report the reference itself as
+    custom. This keeps ordinary Grid-STIX relationship construction free of
+    allow_custom=True while leaving the caller-supplied allow_custom flag
+    (which also governs unrecognized property names) untouched.
+    """
+
+    def clean(self, value: Any, allow_custom: bool) -> tuple[str, bool]:
+        cleaned_value, _has_custom = super().clean(value, True)
+        return cleaned_value, False
 
 
 class DeterministicUUIDGenerator:
@@ -173,11 +194,7 @@ IDENTITY_PROPERTY_CONFIG = {
         "x_voltage_secondary_kv",
         "x_power_rating_mva",
     ],
-    "x-grid-substation": [
-        "name",
-        "x_high_voltage_level_kv",
-        "x_substation_type",
-    ],
+    "x-grid-substation": ["name", "x_high_voltage_level_kv", "x_substation_type"],
     "x-grid-transmission-line": [
         "name",
         "x_grid_component_type",
@@ -794,6 +811,23 @@ IDENTITY_PROPERTY_CONFIG = {
         "x_system_id",
         "x_monitored_area",
         "x_pmu_count",
+    ],
+    # Declaration/Discrepancy comparison model (core/grid-stix-2.1-declarations.owl)
+    "x-grid-declaration": [
+        "x_declared_entity_ref",
+        "x_declaration_source",
+        "x_declared_as_of",
+        "x_declared_value",
+    ],
+    "x-grid-discrepancy": [
+        "x_compares_declaration",
+        "x_compares_evidence",
+        "x_discrepancy_type",
+    ],
+    "x-grid-lifecycle-event": [
+        "x_event_entity_ref",
+        "x_event_type",
+        "x_event_evidence_ref",
     ],
 }
 
