@@ -33,3 +33,10 @@ dependencies:
     - stix2==3.0.1
     - build~=1.3.0
     - urllib3>=2.6.0
+    # Transitive dev-only dependency (pulled in by a conda-forge package, not
+    # a runtime dependency of grid-stix itself — MANIFEST.in ships only
+    # python/*.py, so this never reaches end users). Pinned to close 4 known
+    # CVEs in gitpython<3.1.55 (GHSA-fjr4-x663-mwxc, GHSA-6p8h-3wgx-97gf,
+    # GHSA-r9mr-m37c-5fr3, GHSA-94p4-4cq8-9g67 — unsafe clone/diff options),
+    # found by `make security` on 2026-07-28.
+    - gitpython>=3.1.55
